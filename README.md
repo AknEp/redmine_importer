@@ -1,6 +1,6 @@
 # importer
 
-RedmineにチケットのCSVインストール機能
+RedmineにチケットのCSVインストール機能を追加するプラグイン
 
 ## How To Install 
 
