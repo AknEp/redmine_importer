@@ -54,7 +54,7 @@ class ImporterController < ApplicationController
     i = 0
     @samples = []
 
-    CSV.foreach(tmpfile.path, {:headers=>true, :encoding=>"UTF-8", :quote_char=>wrapper, :col_sep=>splitter}) do |row|
+    FasterCSV.foreach(tmpfile.path, {:headers=>true, :encoding=>"UTF-8", :quote_char=>wrapper, :col_sep=>splitter}) do |row|
       @samples[i] = row
 
       i += 1
@@ -126,7 +126,7 @@ class ImporterController < ApplicationController
     # attrs_map is fields_map's invert
     attrs_map = fields_map.invert
 
-    CSV.foreach(tmpfile.path, {:headers=>true, :encoding=>'UTF-8', :quote_char=>wrapper, :col_sep=>splitter}) do |row|
+    FasterCSV.foreach(tmpfile.path, {:headers=>true, :encoding=>'UTF-8', :quote_char=>wrapper, :col_sep=>splitter}) do |row|
 
       project = Project.find_by_name(row[attrs_map["project"]])
       tracker = Tracker.find_by_name(row[attrs_map["tracker"]])
